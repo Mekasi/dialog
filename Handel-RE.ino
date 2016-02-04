@@ -37,7 +37,7 @@ void loop()
     Serial.print(" ");
     Serial.print(data[2]);
     Serial.print(" ");
-    Serial.println(data[3]);
+    Serial.print(data[3]);
     Serial.print(",");
   }
 }
