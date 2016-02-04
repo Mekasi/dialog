@@ -31,13 +31,13 @@ void loop()
 {
   if (radio.available()) { // проверяем не пришло ли чего в буфер.
     radio.read(&data, sizeof(data)); // читаем данные, указываем сколько байт читать
-    Serial.print("p: ");
     Serial.print(data[0]);
-    Serial.print(" X:");
+    Serial.print(" ");
     Serial.print(data[1]);
-    Serial.print(" Y:");
+    Serial.print(" ");
     Serial.print(data[2]);
-    Serial.print(" Z:");
+    Serial.print(" ");
     Serial.println(data[3]);
+    Serial.print(",");
   }
 }
