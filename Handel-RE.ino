@@ -16,7 +16,7 @@ void setup() {
   // скорость, RF24_250KBPS, RF24_1MBPS или RF24_2MBPS
   // RF24_250KBPS на nRF24L01 (без +) неработает.
   // меньше скорость, выше чувствительность приемника.
-  radio.setDataRate(RF24_1MBPS);
+  radio.setDataRate(RF24_250KBPS);
 
   // мощьность передатчика RF24_PA_MIN=-18dBm, RF24_PA_LOW=-12dBm, RF24_PA_MED=-6dBM,
   radio.setPALevel(RF24_PA_HIGH);
