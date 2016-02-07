@@ -39,5 +39,7 @@ void loop()
     Serial.print(" ");
     Serial.print(data[3]);
     Serial.print(",");
+    Serial.flush();
+    delay(2);
   }
 }
