@@ -31,11 +31,15 @@ void setup()
   radio.openWritingPipe(pipe); // открываем трубу на передачу.
 }
 
-short int AVal() {
+short int AVal1() {
   x = analogRead(A0);
   y = analogRead(A1);
   z = analogRead(A2);
-  delay(10);
+
+  return x, y, z;
+}
+
+short int AVal2() {
   x = fabs((x - analogRead(A0) ) ) ;
   y = fabs((y - analogRead(A1) ) ) ;
   z = fabs((z - analogRead(A2) ) ) ;
@@ -50,26 +54,29 @@ short int PVal() {
 void loop()
 {
 
-  AVal();//разница значения акселерометра
+  AVal1();//значения акселерометра
   PVal();//значение пульсометра
-
-  if (x > 9 || y > 9 || z > 9) {
-    data[0]=p;
+  data[0] = p;
+  radio.write(&data, sizeof(data));
+  AVal2();//разница значений акселерометра
+  if (x > 15 || y > 15 || z > 15) {
+    data[0] = p;
     data[1] = x;
     data[2] = y;
     data[3] = z;
     radio.write(&data, sizeof(data));
   } else {
+    PVal();
     data[0] = p;
     radio.write(&data, sizeof(data));
   };
-    Serial.print("p: ");
-    Serial.print(data[0]);
-    Serial.print(" X:");
-    Serial.print(data[1]);
-    Serial.print(" Y:");
-    Serial.print(data[2]);
-    Serial.print(" Z:");
-    Serial.println(data[3]);
-    
+  Serial.print(data[0]);
+  Serial.print(" ");
+  Serial.print(data[1]);
+  Serial.print(" ");
+  Serial.print(data[2]);
+  Serial.print(" ");
+  Serial.print(data[3]);
+  Serial.print(",");
+  delay(2);
 }
