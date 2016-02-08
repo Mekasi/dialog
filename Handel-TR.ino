@@ -35,11 +35,12 @@ short int AVal1() {
   x = analogRead(A0);
   y = analogRead(A1);
   z = analogRead(A2);
-
+  delay(2);
   return x, y, z;
 }
 
 short int AVal2() {
+  delay(2);
   x = fabs((x - analogRead(A0) ) ) ;
   y = fabs((y - analogRead(A1) ) ) ;
   z = fabs((z - analogRead(A2) ) ) ;
@@ -56,8 +57,6 @@ void loop()
 
   AVal1();//значения акселерометра
   PVal();//значение пульсометра
-  data[0] = p;
-  radio.write(&data, sizeof(data));
   AVal2();//разница значений акселерометра
   if (x > 15 || y > 15 || z > 15) {
     data[0] = p;
