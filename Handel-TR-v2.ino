@@ -22,7 +22,7 @@ void setup() {
   // мощьность передатчика RF24_PA_MIN=-18dBm, RF24_PA_LOW=-12dBm, RF24_PA_MED=-6dBM,
   radio.setPALevel(RF24_PA_HIGH);
 
-  radio.openWritingPipe(pipes02);
+  radio.openWritingPipe(pipe02);
   radio.openReadingPipe(1, pipe01); // открываем первую трубу с индитификатором "pipe"
   //radio.openReadingPipe(2, pipe02); // открываем трубу с индитификатором "pipe02"
   //  radio.openReadingPipe(0,pipe01); // или открываем все трубы разом
