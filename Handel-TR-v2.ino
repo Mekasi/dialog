@@ -7,6 +7,7 @@ const uint64_t pipe02 = 0xF0F1F2F3F1LL; // могут различатся то�
 
 RF24 radio(9, 10); // CE, CSN
 short int data[5];
+short int ch;
 void setup() {
   Serial.begin(9600);
 
@@ -35,13 +36,15 @@ void setup() {
 void loop()
 {
   if (Serial.available()) {
-    char ch = Serial.read();
-    if (ch == 'T') {
+    ch = Serial.read();
+  
       radio.stopListening();
 
       radio.write(&ch, sizeof(ch));
+      Serial.print("send ");
+      Serial.print(ch);
       radio.startListening();
-    }
+  
   } else {
     if (radio.available()) { // проверяем не пришло ли чего в буфер.
       radio.read(&data, sizeof(data)); // читаем данные, указываем сколько байт читать
