@@ -41,8 +41,7 @@ void loop()
       radio.stopListening();
 
       radio.write(&ch, sizeof(ch));
-      Serial.print("send ");
-      Serial.print(ch);
+
       radio.startListening();
   
   } else {
