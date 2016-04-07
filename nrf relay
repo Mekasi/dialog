@@ -5,7 +5,7 @@
 const uint64_t pipe = 0xF0F1F2F3F1LL; // могут различатся только на младший байт
 
 RF24 radio(9, 10); // CE, CSN
-char ch;
+short int ch;
 void setup() {
   Serial.begin(9600);
 
@@ -26,7 +26,7 @@ void setup() {
   //  radio.openReadingPipe(0,pipe01); // или открываем все трубы разом
 
   radio.startListening(); // включаем приемник, начинаем слушать трубу
-  pinMode(13, OUTPUT);
+  pinMode(2, OUTPUT);
 }
 
 // radio.stopListening(); // останавливает приём (нужно перед началом передачи)
@@ -35,10 +35,14 @@ void loop()
 {
 
   if (radio.available()) { // проверяем не пришло ли чего в буфер.
-    radio.read(&data, sizeof(data)); // читаем данные, указываем сколько байт читать
-    digitalWrite(13, HIGH);   // turn the LED on (HIGH is the voltage level)
-    delay(1000);              // wait for a second
-    digitalWrite(13, LOW);    // turn the LED off by making the voltage LOW
-    delay(1000);
+    radio.read(&ch, sizeof(ch)); // читаем данные, указываем сколько байт читать
+    Serial.print("send ");
+    Serial.print(ch);
+    if (ch == 49) {
+      digitalWrite(2, HIGH);   // turn the LED on (HIGH is the voltage level)
+      delay(1000);              // wait for a second
+      digitalWrite(2, LOW);    // turn the LED off by making the voltage LOW
+      delay(1000);
+    }
   }
 }
