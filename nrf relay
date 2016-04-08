@@ -27,9 +27,8 @@ void setup() {
 
   radio.startListening(); // включаем приемник, начинаем слушать трубу
   pinMode(2, OUTPUT);
-  pinMode(4, OUTPUT);
+  pinMode(3, OUTPUT);
   pinMode(5, OUTPUT);
-  pinMode(6, OUTPUT);
   pinMode(7, OUTPUT);
   pinMode(8, OUTPUT);
 }
@@ -46,21 +45,23 @@ void loop()
     Serial.print("send ");
     Serial.print(ch);
     if (ch == 49) {
-      digitalWrite(4, HIGH);   // включить светодиод на контакте 4
+      radio.stopListening(); 
+      digitalWrite(2, HIGH);   // включить светодиод на контакте 4
       delay(100);              // выполнить задержку
-      digitalWrite(4, LOW);    // выключить светодиод
-      digitalWrite(5, HIGH);   // включить светодиод на контакте 5
+      digitalWrite(2, LOW);    // выключить светодиод
+      digitalWrite(3, HIGH);   // включить светодиод на контакте 5
+      delay(100);              // выполнить задержку
+      digitalWrite(3, LOW);    // выключить светодиод
+      digitalWrite(5, HIGH);   // включить светодиод на контакте 6
       delay(100);              // выполнить задержку
       digitalWrite(5, LOW);    // выключить светодиод
-      digitalWrite(6, HIGH);   // включить светодиод на контакте 6
-      delay(100);              // выполнить задержку
-      digitalWrite(6, LOW);    // выключить светодиод
       digitalWrite(7, HIGH);   // включить светодиод на контакте 7
-      delay(100);              // выполнить задержку
+      delay(100);             // выполнить задержку
       digitalWrite(7, LOW);    // выключить светодиод
       digitalWrite(8, HIGH);   // включить светодиод на контакте 8
       delay(100);              // выполнить задержку
       digitalWrite(8, LOW);    // выключить светодиод
+      radio.startListening();
     }
   }
 }
