@@ -64,29 +64,58 @@ void loop()
       radio.startListening();
     }
     if (ch == 49) {
+      radio.stopListening();
       digitalWrite(2, HIGH);
-      delay(100);
+      delay(200);
       digitalWrite(2, LOW);
+      radio.startListening();
     }
     if (ch == 50) {
+      radio.stopListening();
       digitalWrite(3, HIGH);
-      delay(100);
+      delay(200);
       digitalWrite(3, LOW);
+      radio.startListening();
     }
     if (ch == 51) {
+      radio.stopListening();
       digitalWrite(5, HIGH);
-      delay(100);
+      delay(200);
       digitalWrite(5, LOW);
+      radio.startListening();
     }
     if (ch == 52) {
+      radio.stopListening();
+      digitalWrite(7, HIGH);
+      delay(200);
+      digitalWrite(7, LOW);
+      radio.startListening();
+    }
+    if (ch == 53) {
+      radio.stopListening();
+      digitalWrite(8, HIGH);
+      delay(200);
+      digitalWrite(8, LOW);
+      radio.startListening();
+    }
+    if (ch == 54) {
+      radio.stopListening();
+      digitalWrite(8, HIGH);
+      delay(100);
+      digitalWrite(8, LOW);
       digitalWrite(7, HIGH);
       delay(100);
       digitalWrite(7, LOW);
-      if (ch == 53) {
-        digitalWrite(8, HIGH);
-        delay(100);
-        digitalWrite(8, LOW);
-      }
+      digitalWrite(5, HIGH);
+      delay(100);
+      digitalWrite(5, LOW);
+      digitalWrite(3, HIGH);
+      delay(100);
+      digitalWrite(3, LOW);
+      digitalWrite(2, HIGH);
+      delay(100);
+      digitalWrite(2, LOW);
+      radio.startListening();
     }
   }
 }
